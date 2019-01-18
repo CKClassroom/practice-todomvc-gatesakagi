@@ -25,6 +25,7 @@
           <input
             class="toggle"
             type="checkbox"
+            [checked]="todo.isCompleted"
             (click)="toggleComplete(todo)"
           >
           <label>{{todo.item}}</label>
