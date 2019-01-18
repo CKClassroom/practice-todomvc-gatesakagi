@@ -20,11 +20,12 @@
     >
     <label for="toggle-all">Mark all as complete</label>
     <ul class="todo-list">
-      <li *ngFor="let todo of todos">
+      <li *ngFor="let todo of todos; let idx = index">
         <div class="view">
           <input
             class="toggle"
             type="checkbox"
+            (click)="toggleComplete(todo)"
           >
           <label>{{todo.item}}</label>
           <button class="destroy"></button>
