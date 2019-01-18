@@ -5,7 +5,6 @@ interface Todo {
   id: number;
   item: string;
   isCompleted: boolean;
-  isEditing: boolean;
 }
 @Component({
   selector: 'app-root',
@@ -15,8 +14,8 @@ interface Todo {
 export class AppComponent {
   title = 'TODOMVC';
   placeholderText = 'What needs to be done?';
+  todos: Todo[] = [];
   newTodo = '';
-  todos = [];
   maxId = 0;
 
   addTodo() {
@@ -24,19 +23,16 @@ export class AppComponent {
       id: ++this.maxId,
       item: this.newTodo,
       isCompleted: false
-    }
-
-    );
+    });
     console.log(this.todos);
     this.newTodo = '';
   }
   toggleComplete(todo: Todo) {
-    var tmpTodos = this.todos.slice();
-    tmpTodos.forEach(element => {
-      if (element === todo) {
-        element.isCompleted != element.isCompleted;
+    this.todos.forEach(function (item) {
+      if (item === todo) {
+        console.log('same');
+        item.isCompleted = !item.isCompleted;
       }
-    });
-    this.todos = tmpTodos;
+    })
   }
 }
