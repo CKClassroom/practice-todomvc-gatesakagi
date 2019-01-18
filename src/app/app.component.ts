@@ -8,9 +8,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'TODOMVC';
   placeholderText = 'What needs to be done?';
-
-  addTodo(newTodo) {
-    console.log(newTodo.value);
-    newTodo.value = '';
+  newTodo = '';
+  todos = [];
+  maxId = 0;
+  addTodo() {
+    this.todos.push(this.newTodo);
+    console.log(this.todos);
+    this.newTodo = '';
   }
 }
