@@ -5,7 +5,8 @@
       class="new-todo"
       [placeholder]="placeholderText"
       autofocus
-      (keyup.enter)="addTodo($event)"
+      #newTodo
+      (keyup.enter)="addTodo(newTodo)"
     >
   </header>
   <!-- This section should be hidden by default and shown when there are todos -->
