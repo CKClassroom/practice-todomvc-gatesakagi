@@ -6,9 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { FilterPipe } from './filter.pipe';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { TodoFiltersComponent } from './todo-filters/todo-filters.component';
 
 @NgModule({
-  declarations: [AppComponent, FilterPipe, FooterComponent, HeaderComponent],
+  declarations: [AppComponent, FilterPipe, FooterComponent, HeaderComponent, TodoFiltersComponent],
   imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent]
