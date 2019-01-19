@@ -57,12 +57,12 @@ export class AppComponent {
     this.todos.splice(idx, 1);
   }
   toggleCompleted(todo) {
-    var tmpTodos = this.todos.slice();
+    const tmpTodos = this.todos.slice();
     tmpTodos.forEach(element => {
       if (element === todo) {
         element.isCompleted = !element.isCompleted;
       }
-    })
+    });
     this.todos = tmpTodos;
     //todo.isCompleted = !todo.isCompleted;
   }
