@@ -2,16 +2,11 @@
   <!-- <pre>
     {{ todos | json }}
   </pre> -->
-  <header class="header">
-    <h1>{{ title }}</h1>
-    <input
-      class="new-todo"
-      [placeholder]="placeholderText"
-      [(ngModel)]="newTodo"
-      (keyup.enter)="addTodo()"
-      autofocus
-    />
-  </header>
+  <app-header
+    [title]="title"
+    [placeholderText]="placeholderText"
+    (addTodo)="addTodo($event)"
+  ></app-header>
   <!-- This section should be hidden by default and shown when there are todos -->
   <section
     class="main"

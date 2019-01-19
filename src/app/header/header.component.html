@@ -1,3 +1,10 @@
-<p>
-  header works!
-</p>
+<header class="header">
+  <h1>{{ title }}</h1>
+  <input
+    class="new-todo"
+    [placeholder]="placeholderText"
+    [(ngModel)]="newTodo"
+    (keyup.enter)="addTodo()"
+    autofocus
+  />
+</header>

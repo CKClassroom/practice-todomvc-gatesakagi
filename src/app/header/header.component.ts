@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  @Input() title: string;
+  @Input() placeholderText: string;
+  // tslint:disable-next-line:no-output-rename
+  @Output('addTodo') addTodoEmitter = new EventEmitter<string>();
+  newTodo;
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() { }
+  addTodo() {
+    this.addTodoEmitter.emit(this.newTodo);
+    this.newTodo = '';
   }
 
 }

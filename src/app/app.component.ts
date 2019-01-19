@@ -15,8 +15,6 @@ export interface TODO {
 export class AppComponent {
   title = 'TODOMVC';
   placeholderText = 'What needs to be done?';
-
-  newTodo = '';
   todos: TODO[] = [
     {
       id: 1,
@@ -42,15 +40,14 @@ export class AppComponent {
   get uncompletedCount() {
     return this.todos.filter(x => x.isCompleted === false).length;
   }
-  addTodo() {
-    if (this.newTodo !== '') {
+  addTodo(newTodo) {
+    if (newTodo !== '') {
       this.todos.push({
         id: ++this.maxId,
-        item: this.newTodo,
+        item: newTodo,
         isCompleted: false,
         isEditing: false
       });
-      this.newTodo = '';
     } else {
       alert('請輸入內容');
     }
