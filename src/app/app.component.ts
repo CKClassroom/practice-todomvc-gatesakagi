@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-interface TODO {
+export interface TODO {
   id: number;
   item: string;
   isComplete: boolean;
@@ -17,9 +17,28 @@ export class AppComponent {
   placeholderText = 'What needs to be done?';
 
   newTodo = '';
-  todos: TODO[] = [];
-  maxId = 0;
-
+  todos: TODO[] = [
+    {
+      id: 1,
+      item: 'todo 1',
+      isComplete: false,
+      isEditing: false
+    },
+    {
+      id: 2,
+      item: 'todo 2',
+      isComplete: true,
+      isEditing: false
+    },
+    {
+      id: 3,
+      item: 'todo 3',
+      isComplete: false,
+      isEditing: false
+    }
+  ];
+  maxId = 3;
+  filterCondition = "all";
   get uncompletedCount() {
     return this.todos.filter(x => x.isComplete === false).length;
   }
