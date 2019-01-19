@@ -12,7 +12,10 @@ export class AppComponent {
   todos = [];
   maxId = 0;
   addTodo() {
-    this.todos.push(this.newTodo);
+    this.todos.push({
+      id: ++this.maxId,
+      item: this.newTodo
+    });
     this.newTodo = '';
   }
 }
