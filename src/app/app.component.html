@@ -11,7 +11,7 @@
     <input class="toggle-all" type="checkbox" />
     <label for="toggle-all">Mark all as complete</label>
     <ul class="todo-list">
-      <li *ngFor="let todo of todos">
+      <li *ngFor="let todo of todos" [class.completed]="todo.isComplete">
         <div class="view">
           <input class="toggle" type="checkbox" [checked]="todo.isComplete" (change)="toggleCompleted(todo)" />
           <label>{{ todo.item }}</label>
