@@ -28,14 +28,14 @@
     <ul class="todo-list">
       <li
         *ngFor="let todo of todos | filter: filterCondition; let idx = index"
-        [class.completed]="todo.isComplete"
+        [class.completed]="todo.isCompleted"
         [class.editing]="todo.isEditing"
       >
         <div class="view">
           <input
             class="toggle"
             type="checkbox"
-            [checked]="todo.isComplete"
+            [checked]="todo.isCompleted"
             (change)="toggleCompleted(todo)"
           />
           <label (dblclick)="todo.isEditing = true">{{ todo.item }}</label>
@@ -82,15 +82,24 @@
     <ul class="filters">
       <li>
         <a
-          class="selected"
+          [class.selected]="filterCondition==='all'"
           href="#/"
+          (click)="changeFilter('all')"
         >All</a>
       </li>
       <li>
-        <a href="#/active">Active</a>
+        <a
+          [ngClass]="{'selected':filterCondition==='active'}"
+          href="#/active"
+          (click)="changeFilter('active')"
+        >Active</a>
       </li>
       <li>
-        <a href="#/completed">Completed</a>
+        <a
+          [ngClass]="{'selected':filterCondition==='completed'}"
+          href="#/completed"
+          (click)="changeFilter('completed')"
+        >Completed</a>
       </li>
     </ul>
     <!-- Hidden if no completed items are left ↓ -->

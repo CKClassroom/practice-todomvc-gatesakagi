@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 export interface TODO {
   id: number;
   item: string;
-  isComplete: boolean;
+  isCompleted: boolean;
   isEditing: boolean;
 }
 
@@ -21,33 +21,33 @@ export class AppComponent {
     {
       id: 1,
       item: 'todo 1',
-      isComplete: false,
+      isCompleted: false,
       isEditing: false
     },
     {
       id: 2,
       item: 'todo 2',
-      isComplete: true,
+      isCompleted: true,
       isEditing: false
     },
     {
       id: 3,
       item: 'todo 3',
-      isComplete: false,
+      isCompleted: false,
       isEditing: false
     }
   ];
   maxId = 3;
-  filterCondition = "all";
+  filterCondition = 'all';
   get uncompletedCount() {
-    return this.todos.filter(x => x.isComplete === false).length;
+    return this.todos.filter(x => x.isCompleted === false).length;
   }
   addTodo() {
     if (this.newTodo !== '') {
       this.todos.push({
         id: ++this.maxId,
         item: this.newTodo,
-        isComplete: false,
+        isCompleted: false,
         isEditing: false
       });
       this.newTodo = '';
@@ -60,12 +60,19 @@ export class AppComponent {
     this.todos.splice(idx, 1);
   }
   toggleCompleted(todo) {
-    todo.isComplete = !todo.isComplete;
+    var tmpTodos = this.todos.slice();
+    tmpTodos.forEach(element => {
+      if (element === todo) {
+        element.isCompleted = !element.isCompleted;
+      }
+    })
+    this.todos = tmpTodos;
+    //todo.isCompleted = !todo.isCompleted;
   }
   toggleAllCompleted(event) {
     if (event.target.checked) {
       this.todos.forEach(element => {
-        element.isComplete = true;
+        element.isCompleted = true;
       });
     } else {
       this.toggleAllClearCompleted();
@@ -73,7 +80,10 @@ export class AppComponent {
   }
   toggleAllClearCompleted() {
     this.todos.forEach(element => {
-      element.isComplete = false;
+      element.isCompleted = false;
     });
+  }
+  changeFilter(condition) {
+    this.filterCondition = condition;
   }
 }
