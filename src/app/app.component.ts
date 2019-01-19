@@ -25,6 +25,10 @@ export class AppComponent {
     });
     this.newTodo = '';
   }
+  deleteTodo(idx) {
+    console.log(idx);
+    this.todos.splice(idx, 1);
+  }
   toggleCompleted(todo) {
     todo.isComplete = !todo.isComplete;
   }
