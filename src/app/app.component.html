@@ -74,29 +74,7 @@
       <strong>{{uncompletedCount}}</strong> item left</span>
 
     <!-- Remove this if you don't implement routing -->
-    <ul class="filters">
-      <li>
-        <a
-          [class.selected]="filterCondition==='all'"
-          href="#/"
-          (click)="changeFilter('all')"
-        >All</a>
-      </li>
-      <li>
-        <a
-          [ngClass]="{'selected':filterCondition==='active'}"
-          href="#/active"
-          (click)="changeFilter('active')"
-        >Active</a>
-      </li>
-      <li>
-        <a
-          [ngClass]="{'selected':filterCondition==='completed'}"
-          href="#/completed"
-          (click)="changeFilter('completed')"
-        >Completed</a>
-      </li>
-    </ul>
+    <app-todo-filters [(filterCondition)]="filterCondition"></app-todo-filters>
     <!-- Hidden if no completed items are left ↓ -->
     <button
       class="clear-completed"
