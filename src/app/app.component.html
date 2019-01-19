@@ -42,7 +42,8 @@
   <footer class="footer" *ngIf="todos.length > 0">
     <!-- This should be `0 items left` by default -->
     <span class="todo-count">
-      <strong>0</strong> item left</span>
+      <strong>{{uncompletedCount}}</strong> item left</span>
+
     <!-- Remove this if you don't implement routing -->
     <ul class="filters">
       <li>

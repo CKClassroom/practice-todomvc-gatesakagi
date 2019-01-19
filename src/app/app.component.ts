@@ -15,9 +15,13 @@ interface TODO {
 export class AppComponent {
   title = 'TODOMVC';
   placeholderText = 'What needs to be done?';
+
   newTodo = '';
   todos: TODO[] = [];
   maxId = 0;
+  get uncompletedCount() {
+    return this.todos.filter(x => x.isComplete === false).length;
+  }
   addTodo() {
     this.todos.push({
       id: ++this.maxId,
