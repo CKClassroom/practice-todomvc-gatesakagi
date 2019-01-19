@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'TODOMVC';
   placeholderText = 'What needs to be done?';
-  addTodo(event) {
-    console.log(event.target.value);
+  addTodo(newTodo) {
+    console.log(newTodo.value);
   }
 }
