@@ -32,9 +32,8 @@ export class AppComponent {
         isEditing: false
       });
       this.newTodo = '';
-      this.placeholderText = 'What needs to be done?';
     } else {
-      this.placeholderText = '請輸入內容..';
+      alert('請輸入內容');
     }
   }
   deleteTodo(idx) {
