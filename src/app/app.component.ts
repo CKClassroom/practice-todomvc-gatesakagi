@@ -19,17 +19,23 @@ export class AppComponent {
   newTodo = '';
   todos: TODO[] = [];
   maxId = 0;
+
   get uncompletedCount() {
     return this.todos.filter(x => x.isComplete === false).length;
   }
   addTodo() {
-    this.todos.push({
-      id: ++this.maxId,
-      item: this.newTodo,
-      isComplete: false,
-      isEditing: false
-    });
-    this.newTodo = '';
+    if (this.newTodo !== '') {
+      this.todos.push({
+        id: ++this.maxId,
+        item: this.newTodo,
+        isComplete: false,
+        isEditing: false
+      });
+      this.newTodo = '';
+      this.placeholderText = 'What needs to be done?';
+    } else {
+      this.placeholderText = '請輸入內容..';
+    }
   }
   deleteTodo(idx) {
     console.log(idx);
@@ -38,9 +44,18 @@ export class AppComponent {
   toggleCompleted(todo) {
     todo.isComplete = !todo.isComplete;
   }
-  toggleAllCompleted() {
+  toggleAllCompleted(event) {
+    if (event.target.checked) {
+      this.todos.forEach(element => {
+        element.isComplete = true;
+      });
+    } else {
+      this.toggleAllClearCompleted();
+    }
+  }
+  toggleAllClearCompleted() {
     this.todos.forEach(element => {
-      element.isComplete = true;
+      element.isComplete = false;
     });
   }
 }

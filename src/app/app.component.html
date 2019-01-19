@@ -8,7 +8,8 @@
   </header>
   <!-- This section should be hidden by default and shown when there are todos -->
   <section class="main" [hidden]="todos.length === 0">
-    <input class="toggle-all" type="checkbox" (change)="toggleAllCompleted()" />
+    <input class="toggle-all" type="checkbox" [checked]="uncompletedCount === 0" (change)="toggleAllCompleted($event)" />
+
     <label for="toggle-all">Mark all as complete</label>
     <ul class="todo-list">
       <li *ngFor="let todo of todos; let idx = index" [class.completed]="todo.isComplete" [class.editing]="todo.isEditing">
@@ -57,7 +58,8 @@
       </li>
     </ul>
     <!-- Hidden if no completed items are left ↓ -->
-    <button class="clear-completed">Clear completed</button>
+    <button class="clear-completed" (click)="toggleAllClearCompleted()">Clear completed</button>
+
   </footer>
 </section>
 <footer class="info">
