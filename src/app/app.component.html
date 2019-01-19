@@ -27,7 +27,7 @@
     <label for="toggle-all">Mark all as complete</label>
     <ul class="todo-list">
       <li
-        *ngFor="let todo of todos | filter:filterCondition; let idx = index"
+        *ngFor="let todo of todos | filter: filterCondition; let idx = index"
         [class.completed]="todo.isComplete"
         [class.editing]="todo.isEditing"
       >
