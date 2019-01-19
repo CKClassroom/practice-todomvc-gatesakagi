@@ -10,5 +10,6 @@ export class AppComponent {
   placeholderText = 'What needs to be done?';
   addTodo(newTodo) {
     console.log(newTodo.value);
+    newTodo.value = '';
   }
 }
