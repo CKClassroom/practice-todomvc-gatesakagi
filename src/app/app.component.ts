@@ -64,6 +64,7 @@ export class AppComponent {
       }
       return element;
     });
+
     // Method 1
     // const tmpTodos = this.todos.slice();
     // tmpTodos.forEach(element => {
@@ -77,17 +78,27 @@ export class AppComponent {
   }
   toggleAllCompleted(event) {
     if (event.target.checked) {
-      this.todos.forEach(element => {
+      this.todos = this.todos.map(element => {
         element.isCompleted = true;
+        return element;
       });
+
+      // this.todos.forEach(element => {
+      //   element.isCompleted = true;
+      // });
     } else {
       this.toggleAllClearCompleted();
     }
   }
   toggleAllClearCompleted() {
-    this.todos.forEach(element => {
+    this.todos = this.todos.map(element => {
       element.isCompleted = false;
+      return element;
     });
+
+    // this.todos.forEach(element => {
+    //   element.isCompleted = false;
+    // });
   }
   changeFilter(condition) {
     this.filterCondition = condition;
