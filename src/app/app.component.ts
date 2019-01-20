@@ -57,13 +57,22 @@ export class AppComponent {
     this.todos.splice(idx, 1);
   }
   toggleCompleted(todo) {
-    const tmpTodos = this.todos.slice();
-    tmpTodos.forEach(element => {
+    // 改用map處理
+    this.todos = this.todos.map(element => {
       if (element === todo) {
         element.isCompleted = !element.isCompleted;
       }
+      return element;
     });
-    this.todos = tmpTodos;
+    // Method 1
+    // const tmpTodos = this.todos.slice();
+    // tmpTodos.forEach(element => {
+    //   if (element === todo) {
+    //     element.isCompleted = !element.isCompleted;
+    //   }
+    // });
+    // this.todos = tmpTodos;
+
     //todo.isCompleted = !todo.isCompleted;
   }
   toggleAllCompleted(event) {
